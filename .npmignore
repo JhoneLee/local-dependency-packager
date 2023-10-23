@@ -1,0 +1,6 @@
+.vscode
+.eslintrc
+.prettierrc
+index.ts
+packager
+!dist/packager

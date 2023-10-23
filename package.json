@@ -1,0 +1,60 @@
+{
+  "name": "local-dependency-packager",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhoneLee/local-dependency-packager.git"
+  },
+  "license": "GLP-3.0",
+  "bugs": {
+    "url": "https://github.com/JhoneLee/local-dependency-packager/issues"
+  },
+  "homepage": "https://github.com/JhoneLee/local-dependency-packager#readme",
+  "dependencies": {
+    "acorn": "^5.1.2",
+    "acorn-dynamic-import": "^2.0.2",
+    "acorn-walk": "^8.2.0",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^10.1.0",
+    "json5": "^1.0.1",
+    "lodash": "^4.17.4",
+    "lru-cache": "^4.1.2",
+    "meriyah": "^4.3.7",
+    "mz": "^2.7.0",
+    "npm-package-arg": "^6.0.0",
+    "pacote": "^6.0.2",
+    "raven": "^2.2.1",
+    "recursive-readdir": "^2.2.2",
+    "recursive-readdir-sync": "^1.0.6",
+    "semver": "^5.4.1",
+    "string-hash": "^1.1.3",
+    "tslib": "^2.6.2",
+    "yarn": "^1.22.17"
+  },
+  "devDependencies": {
+    "@types/acorn": "^4.0.2",
+    "@types/cross-spawn": "^6.0.4",
+    "@types/fs-extra": "^11.0.3",
+    "@types/json5": "^0.0.29",
+    "@types/lodash": "^4.14.106",
+    "@types/lru-cache": "^4.1.0",
+    "@types/node": "latest",
+    "@types/npm-package-arg": "^5.1.0",
+    "@types/raven": "^2.1.2",
+    "@types/recursive-readdir": "^2.2.0",
+    "@types/rimraf": "^2.0.2",
+    "@types/semver": "^5.4.0",
+    "@types/string-hash": "^1.1.1",
+    "eslint": "^4.7.2",
+    "eslint-config-prettier": "^2.6.0",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^4.5.4"
+  }
+}
