@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import * as os from "os";
 
 import findDependencyDependencies from "./dependencies/find-dependency-dependencies";
 import installDependencies from "./dependencies/install-dependencies";
@@ -17,6 +18,8 @@ export interface IDependency {
 export interface IOptions {
   registry?: string;
   packPath?: string;
+  installArgs?: string[];
+  yarnCliPath?: string;
 }
 
 async function getContents(
@@ -39,16 +42,6 @@ async function getContents(
     }),
     {},
   );
-
-  // // Hardcoded deletion of some modules that are not used but added by accident
-  // deleteHardcodedRequires(
-  //   contents,
-  //   "/node_modules/react/cjs/react.production.min.js",
-  // );
-  // deleteHardcodedRequires(
-  //   contents,
-  //   "/node_modules/react-dom/cjs/react-dom.production.min.js",
-  // );
 
   return { ...contents, ...packageJSONFiles };
 }
@@ -132,6 +125,7 @@ export async function pack(dependency: IDependency, options: IOptions = {}) {
   options.packPath =
     options.packPath ||
     `${process.env.HOME || process.env.USERPROFILE || ""}/tmp`;
+  options.installArgs = options.installArgs || [];
   if (!hash) {
     return;
   }
@@ -146,6 +140,15 @@ export async function pack(dependency: IDependency, options: IOptions = {}) {
     console.error(e);
   } finally {
     await fs.remove(packagePath);
+  }
+
+  // windows
+  if (os.platform() === "win32") {
+    const newContents = {};
+    for (const key of Object.keys(response.contents)) {
+      newContents[key.split(path.sep).join("/")] = response.contents[key];
+    }
+    response.contents = newContents;
   }
   return response || null;
 }
