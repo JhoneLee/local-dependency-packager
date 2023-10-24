@@ -143,7 +143,7 @@ export async function pack(dependency: IDependency, options: IOptions = {}) {
   }
 
   // windows
-  if (os.platform() === "win32") {
+  if (os.platform() === "win32" && response?.contents) {
     const newContents = {};
     for (const key of Object.keys(response.contents)) {
       newContents[key.split(path.sep).join("/")] = response.contents[key];

@@ -19,7 +19,7 @@ export default async function (
     "--non-interactive",
     "--ignore-engines",
     "--skip-integrity-check",
-    "--cache-folder",
+    "--cache-folder ./",
     ...(options.installArgs as string[]),
   ];
   const yarnCli = options.yarnCliPath
